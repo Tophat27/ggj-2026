@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ddcim8r3x6vio" path="res://scenes/player/character_body_2d.tscn" id="1_e64el"]
 [ext_resource type="Texture2D" uid="uid://dsu631xlkfi64" path="res://assets/tileset/mainlev_build.png" id="2_ma5rq"]
 [ext_resource type="PackedScene" uid="uid://wd6ldrqcbfhp" path="res://scenes/box/rigid_body_2d.tscn" id="3_e3dby"]
+[ext_resource type="PackedScene" uid="uid://3o4rgjkl203r" path="res://scenes/totem/white_totem.tscn" id="4_gsayk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3dby"]
 texture = ExtResource("2_ma5rq")
@@ -947,3 +948,7 @@ tile_set = SubResource("TileSet_gsayk")
 position = Vector2(38, 0)
 mass = 0.6
 lock_rotation = true
+
+[node name="WhiteTotem" parent="." unique_id=412478958 instance=ExtResource("4_gsayk")]
+position = Vector2(100, 5)
+disable_mode = 2
