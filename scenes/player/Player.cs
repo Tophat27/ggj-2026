@@ -22,6 +22,12 @@ public partial class Player : CharacterBody2D
 	[Export]
 	CollisionShape2D force;
 
+	[Export]
+	bool canpush = false;
+	bool ispushing = false;
+
+	// animations
+
 	public override void _PhysicsProcess(double delta)
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -73,7 +79,7 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			
-			if (IsOnFloor() && !isJumping){
+			if (IsOnFloor() && !isJumping ){
 				animatedSprite2D.Animation = "idle_" + current_sprite.ToString();
 				currentjumps = totaljumps;
 			}
@@ -87,19 +93,35 @@ public partial class Player : CharacterBody2D
 			jumptimer.Stop();
 		}
 
-		getCollision();
+		if(ispushing){
+			animatedSprite2D.Animation = "push";
+		}
+
+		if (canpush && IsOnFloor()){
+			getCollision(animatedSprite2D);
+		}
+
+		GD.Print(animatedSprite2D.Animation);
 	}
 	
 	
-	public void getCollision(){
+	public void getCollision(AnimatedSprite2D animatedSprite2D){
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
 			var c = GetSlideCollision(i);
 			if (c.GetCollider() is RigidBody2D rb)
 			{
-				float push = PushForce * Velocity.Length() / Speed + MinPush;
-				rb.ApplyCentralImpulse(-c.GetNormal() * push);
-			} 
+				Vector2 normal = c.GetNormal();
+				if (Mathf.Abs(normal.X) > 0.5f)
+				{
+					ispushing = true;
+					float push = PushForce * Velocity.Length() / Speed + MinPush;
+					rb.ApplyCentralImpulse(-normal * push);
+				}
+			}
+			else {
+				ispushing = false;
+			}
 		}
 	}
 
@@ -118,6 +140,6 @@ public partial class Player : CharacterBody2D
 	public void ActivateBearMask(){
 		current_sprite = 2;
 		totaljumps = 1;
-		force.Disabled = false;
+		canpush = true;
 	}
 }
