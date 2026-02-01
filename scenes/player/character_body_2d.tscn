@@ -25,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://bgjaxnvodk7m1" path="res://assets/audio/sfx/boots/6.ogg" id="23_yhlsn"]
 [ext_resource type="AudioStream" uid="uid://4qu2udyvkhwq" path="res://assets/audio/sfx/boots/7.ogg" id="24_7h5d5"]
 [ext_resource type="AudioStream" uid="uid://dt45fdsyjlu6l" path="res://assets/audio/sfx/boots/8.ogg" id="25_duhln"]
+[ext_resource type="AudioStream" uid="uid://dlkj5s6w6bjg7" path="res://assets/audio/sfx/impactPlate_light_003.ogg" id="26_44q4y"]
+[ext_resource type="AudioStream" uid="uid://c5uvg5584cmes" path="res://assets/audio/sfx/whoosh.wav" id="27_3s84d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcybn"]
 atlas = ExtResource("3_yqqr5")
@@ -637,6 +639,12 @@ stream = ExtResource("24_7h5d5")
 
 [node name="SFX_Walking_08" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=2070109104]
 stream = ExtResource("25_duhln")
+
+[node name="SFX_Shoot" type="AudioStreamPlayer2D" parent="." unique_id=163916092]
+stream = ExtResource("26_44q4y")
+
+[node name="SFX_Totem" type="AudioStreamPlayer2D" parent="." unique_id=464513386]
+stream = ExtResource("27_3s84d")
 
 [connection signal="timeout" from="JumpTimer" to="." method="OnJumpTimerTimeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="OnShootTimerTimeout"]

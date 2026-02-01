@@ -6,6 +6,16 @@ public partial class Door : StaticBody2D
 	[Export]
 	public bool open = false;
 	int current = 0;
+	
+	private AudioStreamPlayer2D openDoor;
+	private AudioStreamPlayer2D closeDoor;
+	
+	public override void _Ready()
+	{
+		openDoor = GetNode<AudioStreamPlayer2D>("SFX_OpenDoor");
+		closeDoor = GetNode<AudioStreamPlayer2D>("SFX_CloseDoor");
+	}
+	
 	public override void _Process(double delta)
 	{
 		var animator = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -16,6 +26,7 @@ public partial class Door : StaticBody2D
 			{
 				animator.Play("open");
 				current = 1;
+				openDoor.Play();
 			}
 			
 		}
@@ -26,6 +37,7 @@ public partial class Door : StaticBody2D
 			{
 				animator.Play("close");
 				current = 0;
+				closeDoor.Play();
 			}
 		}
 	}

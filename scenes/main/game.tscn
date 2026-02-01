@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dljdcj5bvkb5o" path="res://scenes/gate/door.tscn" id="8_kjrfb"]
 [ext_resource type="AudioStream" uid="uid://ba5towpe46kd5" path="res://assets/audio/sfx/music_jewels.ogg" id="9_ktwa8"]
 [ext_resource type="Script" uid="uid://b3vtbvfcdjr1s" path="res://scenes/main/Bgm.cs" id="10_157ky"]
+[ext_resource type="PackedScene" uid="uid://vwpur7susm7i" path="res://scenes/button/pressed_button.tscn" id="11_157ky"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3dby"]
 texture = ExtResource("2_ma5rq")
@@ -994,3 +995,6 @@ energy = 0.2
 stream = ExtResource("9_ktwa8")
 volume_db = -6.804
 script = ExtResource("10_157ky")
+
+[node name="PressedButton" parent="." unique_id=292773506 instance=ExtResource("11_157ky")]
+position = Vector2(-43, 9)

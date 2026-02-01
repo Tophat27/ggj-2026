@@ -36,6 +36,8 @@ private int currentWalkIndex = 0;
 private float walkTimer = 0.3f;
 private float walkDelay = 0.3f;
 private AudioStreamPlayer2D playerJumping;
+private AudioStreamPlayer2D playerShooting;
+private AudioStreamPlayer2D playerTotem;
 
 private float pushTimer = 0f;
 private float pushDelay = 0.5f;
@@ -50,6 +52,8 @@ public override void _Ready()
 	}
 	
 	playerJumping = GetNode<AudioStreamPlayer2D>("SFX_Jump");
+	playerShooting = GetNode<AudioStreamPlayer2D>("SFX_Shoot");
+	playerTotem = GetNode<AudioStreamPlayer2D>("SFX_Totem");
 }
 
 	// animations
@@ -158,6 +162,7 @@ public override void _Ready()
 		if (canShoot && Input.IsActionJustPressed("shoot") && !isShooting){
 			isShooting = true;
 			shoottimer.Start();
+			playerShooting.Play();
 			animatedSprite2D.Animation = "shooting";
 			var bullet = (Bullet)instance.Instantiate();
 
@@ -227,6 +232,7 @@ public void getCollision(AnimatedSprite2D animatedSprite2D)
 
 	public void ActivateFoxMask()
 	{
+		playerTotem.Play();
 		current_sprite = 1;
 		totaljumps = 2;
 		canpush = false;
@@ -234,6 +240,7 @@ public void getCollision(AnimatedSprite2D animatedSprite2D)
 	}
 	
 	public void ActivateBearMask(){
+		playerTotem.Play();
 		current_sprite = 2;
 		totaljumps = 1;
 		canpush = true;
@@ -241,6 +248,7 @@ public void getCollision(AnimatedSprite2D animatedSprite2D)
 	}
 
 	public void ActivateHogMask(){
+		playerTotem.Play();
 		current_sprite = 3;
 		totaljumps = 1;
 		canpush = false;

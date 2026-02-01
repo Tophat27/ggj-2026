@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://o8ag3aeq7wax" path="res://scenes/gate/Door.cs" id="1_ic3st"]
 [ext_resource type="Texture2D" uid="uid://h31i3ol4col0" path="res://assets/Hallow dugeon/gate.png" id="2_dlj1p"]
+[ext_resource type="AudioStream" uid="uid://c3xmvjal4qew5" path="res://assets/audio/sfx/door-02.ogg" id="3_ah22o"]
+[ext_resource type="AudioStream" uid="uid://bmon4t5yumkqc" path="res://assets/audio/sfx/door-01.ogg" id="4_n80sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah22o"]
 size = Vector2(16, 28)
@@ -108,3 +110,9 @@ texture = ExtResource("2_dlj1p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120145589]
 libraries/ = SubResource("AnimationLibrary_n80sx")
+
+[node name="SFX_CloseDoor" type="AudioStreamPlayer2D" parent="." unique_id=1166928051]
+stream = ExtResource("3_ah22o")
+
+[node name="SFX_OpenDoor" type="AudioStreamPlayer2D" parent="." unique_id=401927840]
+stream = ExtResource("4_n80sx")
