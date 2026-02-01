@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wd6ldrqcbfhp"]
 
 [ext_resource type="Texture2D" uid="uid://ckbul7nlu8maw" path="res://assets/box_sprite/box.png" id="1_3m13f"]
+[ext_resource type="AudioStream" uid="uid://cdp8xsdq8y38a" path="res://assets/audio/sfx/push.wav" id="2_duroh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3m13f"]
 
@@ -18,3 +19,6 @@ shape = SubResource("RectangleShape2D_3m13f")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1638943068]
 scale = Vector2(1.085, 1.085)
 texture = ExtResource("1_3m13f")
+
+[node name="SFX_Push" type="AudioStreamPlayer2D" parent="." unique_id=1946929800]
+stream = ExtResource("2_duroh")
