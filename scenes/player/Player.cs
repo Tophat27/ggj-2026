@@ -30,6 +30,32 @@ public partial class Player : CharacterBody2D
 	bool canShoot = false;
 	bool isShooting = false;
 
+
+private AudioStreamPlayer2D[] walkingSounds;
+private int currentWalkIndex = 0;
+private float walkTimer = 0.3f;
+private float walkDelay = 0.3f;
+private AudioStreamPlayer2D playerJumping;
+private AudioStreamPlayer2D playerShooting;
+private AudioStreamPlayer2D playerTotem;
+
+private float pushTimer = 0f;
+private float pushDelay = 0.5f;
+
+public override void _Ready()
+{
+	walkingSounds = new AudioStreamPlayer2D[8];
+	for (int i = 1; i <= 8; i++)
+	{
+		walkingSounds[i - 1] = GetNode<AudioStreamPlayer2D>($"SFX_WalkingList/SFX_Walking_0{i}");
+		walkingSounds[i-1].VolumeDb = -15;
+	}
+	
+	playerJumping = GetNode<AudioStreamPlayer2D>("SFX_Jump");
+	playerShooting = GetNode<AudioStreamPlayer2D>("SFX_Shoot");
+	playerTotem = GetNode<AudioStreamPlayer2D>("SFX_Totem");
+}
+
 	// animations
 
 	public override void _PhysicsProcess(double delta)
@@ -67,7 +93,14 @@ public partial class Player : CharacterBody2D
 			isJumping = true;
 			isShooting = false;	
 			currentjumps -= 1;
+			playerJumping.Play();
+			walkTimer = 0;
+			foreach (var sound in walkingSounds )
+			{
+				sound.Stop();
+			}
 		}
+		
 
 
 		// Get the input direction and handle the movement/deceleration.
@@ -80,6 +113,13 @@ public partial class Player : CharacterBody2D
 			if (IsOnFloor() && !isJumping){
 				animatedSprite2D.Animation = "walk_" + current_sprite.ToString();
 				currentjumps = totaljumps;
+				walkTimer -= (float)delta;
+				 if (walkTimer <= 0)
+				 {
+					walkingSounds[currentWalkIndex].Play();
+					currentWalkIndex = (currentWalkIndex + 1) % walkingSounds.Length;
+					walkTimer = walkDelay;
+				 }
 			}
 			animatedSprite2D.FlipH = velocity.X < 0;
 		}
@@ -90,6 +130,11 @@ public partial class Player : CharacterBody2D
 			if (IsOnFloor() && !isJumping && !isShooting){
 				animatedSprite2D.Animation = "idle_" + current_sprite.ToString();
 				currentjumps = totaljumps;
+				walkTimer = 0;
+				foreach (var sound in walkingSounds)
+				{
+					sound.Stop();
+				}
 			}
 		}
 
@@ -117,6 +162,7 @@ public partial class Player : CharacterBody2D
 		if (canShoot && Input.IsActionJustPressed("shoot") && !isShooting){
 			isShooting = true;
 			shoottimer.Start();
+			playerShooting.Play();
 			animatedSprite2D.Animation = "shooting";
 			var bullet = (Bullet)instance.Instantiate();
 
@@ -133,28 +179,47 @@ public partial class Player : CharacterBody2D
 			GetTree().CurrentScene.AddChild(bullet);
 			
 		}
-	}
-	
-	
-	public void getCollision(AnimatedSprite2D animatedSprite2D){
-		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		// coisa da caixa lol
+		if (pushTimer > 0)
 		{
-			var c = GetSlideCollision(i);
-			if (c.GetCollider() is RigidBody2D rb)
-			{
-				Vector2 normal = c.GetNormal();
-				if (Mathf.Abs(normal.X) > 0.5f)
-				{
-					ispushing = true;
-					float push = PushForce * Velocity.Length() / Speed + MinPush;
-					rb.ApplyCentralImpulse(-normal * push);
-				}
-			}
-			else {
-				ispushing = false;
-			}
+			pushTimer -= (float)delta;
 		}
 	}
+	
+	
+public void getCollision(AnimatedSprite2D animatedSprite2D)
+{
+	for (int i = 0; i < GetSlideCollisionCount(); i++)
+	{
+		var c = GetSlideCollision(i);
+		if (c.GetCollider() is RigidBody2D rb)
+		{
+			Vector2 normal = c.GetNormal();
+			if (Mathf.Abs(normal.X) > 0.5f)
+			{
+				ispushing = true;
+				float push = PushForce * Velocity.Length() / Speed + MinPush;
+				rb.ApplyCentralImpulse(-normal * push);
+				
+				if (rb.LinearVelocity.Length() > 5)
+				{
+					if (pushTimer <= 0)
+					{
+						var pushSound = rb.GetNodeOrNull<AudioStreamPlayer2D>("SFX_Push");
+						if (pushSound != null)
+						{
+							pushSound.Play();
+							pushTimer = pushDelay;
+						}
+					}
+				}
+			}
+		}
+		else {
+			ispushing = false;
+		}
+	}
+}
 
 	public void OnJumpTimerTimeout()
 	{
@@ -167,6 +232,7 @@ public partial class Player : CharacterBody2D
 
 	public void ActivateFoxMask()
 	{
+		playerTotem.Play();
 		current_sprite = 1;
 		totaljumps = 2;
 		canpush = false;
@@ -174,6 +240,7 @@ public partial class Player : CharacterBody2D
 	}
 	
 	public void ActivateBearMask(){
+		playerTotem.Play();
 		current_sprite = 2;
 		totaljumps = 1;
 		canpush = true;
@@ -181,6 +248,7 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void ActivateHogMask(){
+		playerTotem.Play();
 		current_sprite = 3;
 		totaljumps = 1;
 		canpush = false;

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ck827faxbf88u" path="res://scenes/button/PressedButton.cs" id="1_aibws"]
 [ext_resource type="Texture2D" uid="uid://4eioajb00dv2" path="res://assets/button/button.png" id="1_i7l11"]
 [ext_resource type="Texture2D" uid="uid://c0lilt2bfnw27" path="res://assets/button/button_pressed.png" id="2_aibws"]
+[ext_resource type="AudioStream" uid="uid://b3picl7vaxpir" path="res://assets/audio/sfx/turn_stove_on_01.ogg" id="4_7tl1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tl1s"]
 size = Vector2(12, 5)
@@ -37,6 +38,9 @@ shape = SubResource("RectangleShape2D_7tl1s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=839863327]
 sprite_frames = SubResource("SpriteFrames_eluh3")
 animation = &"idle"
+
+[node name="SFX_Button" type="AudioStreamPlayer2D" parent="." unique_id=1173269576]
+stream = ExtResource("4_7tl1s")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="." to="." method="OnAreaExited"]
