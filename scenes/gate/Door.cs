@@ -4,7 +4,7 @@ using System;
 public partial class Door : StaticBody2D
 {
 	[Export]
-	bool open = false;
+	public bool open = false;
 	int current = 0;
 	public override void _Process(double delta)
 	{
