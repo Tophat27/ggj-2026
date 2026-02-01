@@ -9,6 +9,13 @@ public partial class PressedButton : Area2D
 
 	[Export]
 	AnimatedSprite2D sprite;
+	
+	private AudioStreamPlayer2D buttonPress;
+	
+	public override void _Ready()
+	{
+		buttonPress = GetNode<AudioStreamPlayer2D>("SFX_Button");
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -19,6 +26,7 @@ public partial class PressedButton : Area2D
 	{
 		if (collision.IsInGroup("box") || collision.IsInGroup("player"))
 		{
+			buttonPress.Play();
 			door.open = true;
 			sprite.Animation = "pressed";
 		}
