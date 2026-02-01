@@ -931,10 +931,10 @@ sources/0 = SubResource("TileSetAtlasSource_e3dby")
 
 [node name="Main" type="Node2D" unique_id=1098092992]
 
-[node name="Player" parent="." unique_id=1831433174 instance=ExtResource("1_e64el")]
+[node name="Player" parent="." unique_id=1831433174 groups=["player"] instance=ExtResource("1_e64el")]
 position = Vector2(0, 5)
 JumpVelocity = -300.0
-totaljumps = 2
+canpush = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=201560870]
 zoom = Vector2(3.955, 3.955)
