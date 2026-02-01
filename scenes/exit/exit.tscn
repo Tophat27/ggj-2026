@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cugfa3oyrl387"]
+
+[ext_resource type="Script" uid="uid://7t63ppqkt8gv" path="res://scenes/exit/Exit.cs" id="1_wmb3t"]
+[ext_resource type="Texture2D" uid="uid://cu48vxbcaksdh" path="res://assets/Hallow dugeon/exit.png" id="1_ymjir"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmb3t"]
+height = 44.0
+
+[node name="Exit" type="Area2D" unique_id=1666461757]
+script = ExtResource("1_wmb3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=822168429]
+texture = ExtResource("1_ymjir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063977585]
+shape = SubResource("CapsuleShape2D_wmb3t")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
