@@ -26,12 +26,19 @@ public partial class Player : CharacterBody2D
 	bool canpush = false;
 	bool ispushing = false;
 
+	[Export]
+	bool canShoot = false;
+	bool isShooting = false;
+
 	// animations
 
 	public override void _PhysicsProcess(double delta)
 	{
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		var jumptimer = GetNode<Timer>("JumpTimer");
+		var shoottimer = GetNode<Timer>("ShootTimer");
+		var marker = GetNode<Marker2D>("Marker2D");
+		var instance = GD.Load<PackedScene>("res://scenes/bullet/bullet.tscn");
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
@@ -57,7 +64,8 @@ public partial class Player : CharacterBody2D
 			velocity.Y = JumpVelocity;
 			animatedSprite2D.Animation = "jump_" + current_sprite.ToString();
 			jumptimer.Start();	
-			isJumping = true;	
+			isJumping = true;
+			isShooting = false;	
 			currentjumps -= 1;
 		}
 
@@ -79,7 +87,7 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			
-			if (IsOnFloor() && !isJumping ){
+			if (IsOnFloor() && !isJumping && !isShooting){
 				animatedSprite2D.Animation = "idle_" + current_sprite.ToString();
 				currentjumps = totaljumps;
 			}
@@ -92,6 +100,11 @@ public partial class Player : CharacterBody2D
 		{
 			jumptimer.Stop();
 		}
+		
+		if (!isShooting)
+		{
+			jumptimer.Stop();
+		}
 
 		if(ispushing){
 			animatedSprite2D.Animation = "push";
@@ -101,7 +114,25 @@ public partial class Player : CharacterBody2D
 			getCollision(animatedSprite2D);
 		}
 
-		GD.Print(animatedSprite2D.Animation);
+		if (canShoot && Input.IsActionJustPressed("shoot") && !isShooting){
+			isShooting = true;
+			shoottimer.Start();
+			animatedSprite2D.Animation = "shooting";
+			var bullet = (Bullet)instance.Instantiate();
+
+			Vector2 mark = marker.GlobalPosition;
+
+			if (animatedSprite2D.FlipH){
+				bullet.speed = -bullet.speed;
+				float deslocation = marker.Position.X;
+				mark.X = GlobalPosition.X - deslocation;
+			}
+
+			bullet.GlobalPosition = mark;
+
+			GetTree().CurrentScene.AddChild(bullet);
+			
+		}
 	}
 	
 	
@@ -130,16 +161,30 @@ public partial class Player : CharacterBody2D
 		isJumping = false;
 	}
 
+	public void OnShootTimerTimeout(){
+		isShooting = false;
+	}
+
 	public void ActivateFoxMask()
 	{
 		current_sprite = 1;
 		totaljumps = 2;
-		force.Disabled = true;
-	} 
+		canpush = false;
+		canShoot = false;
+	}
 	
 	public void ActivateBearMask(){
 		current_sprite = 2;
 		totaljumps = 1;
 		canpush = true;
+		canShoot = false;
+	}
+
+	public void ActivateHogMask(){
+		current_sprite = 3;
+		totaljumps = 1;
+		canpush = false;
+		canShoot = true;
+
 	}
 }
