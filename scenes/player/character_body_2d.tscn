@@ -571,7 +571,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iux3d"]
-size = Vector2(10.5, 18)
+size = Vector2(10.5, 13)
 
 [node name="Player" type="CharacterBody2D" unique_id=1831433174]
 script = ExtResource("1_s25n1")
@@ -584,7 +584,7 @@ animation = &"landing_1"
 autoplay = "idle_0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=756308389]
-position = Vector2(-0.5, 1)
+position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_iux3d")
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=1177673375]
