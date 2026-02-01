@@ -15,6 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://cjtlfon2jm58x" path="res://assets/player_sprites/bear/player_walk_bear.png" id="10_gxf5x"]
 [ext_resource type="Texture2D" uid="uid://cwutselyifxpn" path="res://assets/player_sprites/hog/player_shooting.png" id="11_ei00l"]
 [ext_resource type="Texture2D" uid="uid://bbisuqp7p5rqf" path="res://assets/player_sprites/hog/player_walk_hog.png" id="15_pcybn"]
+[ext_resource type="AudioStream" uid="uid://djf8thakte61n" path="res://assets/audio/sfx/boots/0.ogg" id="16_ei00l"]
+[ext_resource type="AudioStream" uid="uid://d288fn8q5vb4p" path="res://assets/audio/sfx/30_Jump_03.wav" id="17_pcybn"]
+[ext_resource type="AudioStream" uid="uid://bl1662kor8upl" path="res://assets/audio/sfx/boots/1.ogg" id="18_eowst"]
+[ext_resource type="AudioStream" uid="uid://bjcvt1dt2xgtk" path="res://assets/audio/sfx/boots/2.ogg" id="19_44q4y"]
+[ext_resource type="AudioStream" uid="uid://oyysdbweqp5v" path="res://assets/audio/sfx/boots/3.ogg" id="20_3s84d"]
+[ext_resource type="AudioStream" uid="uid://csxp8hdbra2tn" path="res://assets/audio/sfx/boots/4.ogg" id="21_bv1np"]
+[ext_resource type="AudioStream" uid="uid://cm7chcq0j7u41" path="res://assets/audio/sfx/boots/5.ogg" id="22_7d8bp"]
+[ext_resource type="AudioStream" uid="uid://bgjaxnvodk7m1" path="res://assets/audio/sfx/boots/6.ogg" id="23_yhlsn"]
+[ext_resource type="AudioStream" uid="uid://4qu2udyvkhwq" path="res://assets/audio/sfx/boots/7.ogg" id="24_7h5d5"]
+[ext_resource type="AudioStream" uid="uid://dt45fdsyjlu6l" path="res://assets/audio/sfx/boots/8.ogg" id="25_duhln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcybn"]
 atlas = ExtResource("3_yqqr5")
@@ -595,6 +605,38 @@ wait_time = 0.4
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1451167927]
 position = Vector2(13, 1)
+
+[node name="SFX_Jump" type="AudioStreamPlayer2D" parent="." unique_id=2032557791]
+stream = ExtResource("17_pcybn")
+
+[node name="SFX_Walking" type="AudioStreamPlayer2D" parent="." unique_id=1726217809]
+stream = ExtResource("16_ei00l")
+
+[node name="SFX_WalkingList" type="Node" parent="." unique_id=494945172]
+
+[node name="SFX_Walking_01" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=1917484250]
+stream = ExtResource("18_eowst")
+
+[node name="SFX_Walking_02" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=421544552]
+stream = ExtResource("19_44q4y")
+
+[node name="SFX_Walking_03" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=432710365]
+stream = ExtResource("20_3s84d")
+
+[node name="SFX_Walking_04" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=1665129871]
+stream = ExtResource("21_bv1np")
+
+[node name="SFX_Walking_05" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=63771384]
+stream = ExtResource("22_7d8bp")
+
+[node name="SFX_Walking_06" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=1562036849]
+stream = ExtResource("23_yhlsn")
+
+[node name="SFX_Walking_07" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=2069312410]
+stream = ExtResource("24_7h5d5")
+
+[node name="SFX_Walking_08" type="AudioStreamPlayer2D" parent="SFX_WalkingList" unique_id=2070109104]
+stream = ExtResource("25_duhln")
 
 [connection signal="timeout" from="JumpTimer" to="." method="OnJumpTimerTimeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="OnShootTimerTimeout"]
