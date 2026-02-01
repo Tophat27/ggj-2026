@@ -1,102 +1,51 @@
 [gd_scene format=3 uid="uid://i4t5jk6bk6pr"]
 
 [ext_resource type="Texture2D" uid="uid://cj06nw6novxax" path="res://assets/tileset/background4b.png" id="1_i7fpr"]
-[ext_resource type="Shader" uid="uid://drxi6f28g3bkf" path="res://scenes/main/shader.gdshader" id="1_smsqd"]
 [ext_resource type="Texture2D" uid="uid://clym8k1ex5vju" path="res://assets/tileset/background4a.png" id="2_smsqd"]
 [ext_resource type="Texture2D" uid="uid://cpecpiskyp0y2" path="res://assets/tileset/background3.png" id="3_osuvw"]
 [ext_resource type="Texture2D" uid="uid://t237ltdc5h3n" path="res://assets/tileset/background2.png" id="4_pxulu"]
 [ext_resource type="Texture2D" uid="uid://c1otvkobiwp1p" path="res://assets/tileset/background1.png" id="5_n4vpf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_osuvw"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxulu"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4vpf"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hikit"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2aqr"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o74i5"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c4u4"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2aat8"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov45e"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yelvf"]
-shader = ExtResource("1_smsqd")
-shader_parameter/intensidade_vermelho = 1.0
-
 [node name="Background" type="Sprite2D" unique_id=972627146]
-material = SubResource("ShaderMaterial_osuvw")
 texture = ExtResource("1_i7fpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1691313572]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_pxulu")
 position = Vector2(-1.0000153, 0)
 scale = Vector2(2.6687498, 2)
 texture = ExtResource("5_n4vpf")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1663152693]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_n4vpf")
 repeat_size = Vector2(800, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1902278652]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_hikit")
 texture = ExtResource("2_smsqd")
 
 [node name="Parallax2D2" type="Parallax2D" parent="Parallax2D/Sprite2D" unique_id=1012627920]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_t2aqr")
 scroll_scale = Vector2(0.8, 1)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Sprite2D/Parallax2D2" unique_id=1583201096]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_o74i5")
 
 [node name="Parallax2D3" type="Parallax2D" parent="Parallax2D/Sprite2D/Parallax2D2/Sprite2D" unique_id=1834740047]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_5c4u4")
 scroll_scale = Vector2(0.6, 1)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Sprite2D/Parallax2D2/Sprite2D/Parallax2D3" unique_id=730179879]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_2aat8")
 texture = ExtResource("3_osuvw")
 
 [node name="Parallax2D4" type="Parallax2D" parent="Parallax2D/Sprite2D/Parallax2D2/Sprite2D/Parallax2D3/Sprite2D" unique_id=186544284]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_ov45e")
 scroll_scale = Vector2(0.4, 1)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Sprite2D/Parallax2D2/Sprite2D/Parallax2D3/Sprite2D/Parallax2D4" unique_id=907816349]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_yelvf")
 texture = ExtResource("4_pxulu")

@@ -1,7 +1,7 @@
 extends Area2D
 
 # Efeito que este item causa (personalizável)
-#@export var efeito = "ActivateFoxMask"
+#@export var efeito = "ActivateBearMask"
 
 func _ready():
 	# Conecta o sinal de área entrante automaticamente
