@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjtlfon2jm58x"
-path="res://.godot/imported/player_walk_bear.png-1402b3d7791fff5b3973819f3cfe9592.ctex"
+uid="uid://bbisuqp7p5rqf"
+path="res://.godot/imported/player_walk_hog.png-2d4a313c8cb8ad16f97f8068e8e13e81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_sprites/player_walk_bear.png"
-dest_files=["res://.godot/imported/player_walk_bear.png-1402b3d7791fff5b3973819f3cfe9592.ctex"]
+source_file="res://assets/player_sprites/hog/player_walk_hog.png"
+dest_files=["res://.godot/imported/player_walk_hog.png-2d4a313c8cb8ad16f97f8068e8e13e81.ctex"]
 
 [params]
 
