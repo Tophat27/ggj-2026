@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b2aab6s7ujs0r"]
+[gd_scene format=3 uid="uid://dshnqhfjws25x"]
 
 [ext_resource type="Script" uid="uid://cgleet0lyrkvk" path="res://scenes/totem/green_totem.gd" id="1_ot75w"]
 [ext_resource type="Texture2D" uid="uid://bq8kry0xwac0m" path="res://assets/totem_sprites/totem Green.png" id="2_jhptk"]

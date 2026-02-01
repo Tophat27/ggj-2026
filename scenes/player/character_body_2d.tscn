@@ -377,7 +377,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o1d46")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump_0",
 "speed": 5.0
 }, {
@@ -418,7 +418,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_304o6")
 }],
-"loop": false,
+"loop": true,
 "name": &"landing_0",
 "speed": 3.0
 }, {
@@ -575,12 +575,13 @@ size = Vector2(10.5, 18)
 
 [node name="Player" type="CharacterBody2D" unique_id=1831433174]
 script = ExtResource("1_s25n1")
+Speed = 150.0
+JumpVelocity = -200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1592612765]
 sprite_frames = SubResource("SpriteFrames_d4mfp")
-animation = &"shooting"
+animation = &"landing_1"
 autoplay = "idle_0"
-frame_progress = 0.5854669
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=756308389]
 position = Vector2(-0.5, 1)

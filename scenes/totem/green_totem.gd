@@ -1,7 +1,7 @@
 extends Area2D
 
 # Efeito que este item causa (personalizável)
-#@export var efeito = "ActivateBearMask"
+# @export var efeito = "ActivateHogMask"
 
 func _ready():
 	# Conecta o sinal de área entrante automaticamente
@@ -13,5 +13,9 @@ func _on_body_entered(body):
 		aplicar_efeito(body)
 		#coletar()
 
-func aplicar_efeito(player): player.ActivateBearMask()
+func aplicar_efeito(player): 
+	player.ActivateHogMask()
+	var light = get_tree().get_nodes_in_group("light")
+	if light:
+		light[0].color = Color.GREEN
 		

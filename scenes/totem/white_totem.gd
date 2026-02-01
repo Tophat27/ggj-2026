@@ -13,5 +13,8 @@ func _on_body_entered(body):
 		aplicar_efeito(body)
 		#coletar()
 
-func aplicar_efeito(player): player.ActivateFoxMask()
-		
+func aplicar_efeito(player): 
+	player.ActivateFoxMask()
+	var light = get_tree().get_nodes_in_group("light")
+	if light:
+		light[0].color = Color.WHITE

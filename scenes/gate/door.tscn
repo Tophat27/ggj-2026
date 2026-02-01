@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dljdcj5bvkb5o"]
+
+[ext_resource type="Script" uid="uid://o8ag3aeq7wax" path="res://scenes/gate/Door.cs" id="1_ic3st"]
+[ext_resource type="Texture2D" uid="uid://h31i3ol4col0" path="res://assets/Hallow dugeon/gate.png" id="2_dlj1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah22o"]
+size = Vector2(16, 28)
+
+[sub_resource type="Animation" id="Animation_ic3st"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dlj1p"]
+resource_name = "close"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -26), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -26), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ah22o"]
+resource_name = "open"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -26)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n80sx"]
+_data = {
+&"RESET": SubResource("Animation_ic3st"),
+&"close": SubResource("Animation_dlj1p"),
+&"open": SubResource("Animation_ah22o")
+}
+
+[node name="Door" type="StaticBody2D" unique_id=610682300]
+script = ExtResource("1_ic3st")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1618838222]
+shape = SubResource("RectangleShape2D_ah22o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=330667476]
+scale = Vector2(2, 2)
+texture = ExtResource("2_dlj1p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120145589]
+libraries/ = SubResource("AnimationLibrary_n80sx")

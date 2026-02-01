@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://duyh0kl1q1kqj"]
+[gd_scene format=3 uid="uid://du4ri04csdu5e"]
 
-[ext_resource type="Script" uid="uid://wq8kmxtgenfr" path="res://scenes/totem/red_totem.gd" id="1_b3x3b"]
+[ext_resource type="Script" path="res://scenes/totem/red_totem.gd" id="1_b3x3b"]
 [ext_resource type="Texture2D" uid="uid://b3i0dc0ujmoio" path="res://assets/totem_sprites/totem mascara ala-Sheet.png" id="2_b5wld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2sgi"]
@@ -47,6 +47,7 @@ script = ExtResource("1_b3x3b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2139070222]
 sprite_frames = SubResource("SpriteFrames_nxlfs")
+autoplay = "default"
 frame_progress = 0.07864497
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1887612743]
