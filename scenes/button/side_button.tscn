@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cf1ruhykc7be1"]
+
+[ext_resource type="Texture2D" uid="uid://4eioajb00dv2" path="res://assets/button/button.png" id="1_c3nuh"]
+[ext_resource type="Script" uid="uid://dbqd57w4ajkdt" path="res://scenes/button/SideButton.cs" id="1_l3eec"]
+[ext_resource type="Texture2D" uid="uid://c0lilt2bfnw27" path="res://assets/button/button_pressed.png" id="2_l3eec"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8bvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c3nuh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l3eec")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8bvp"]
+size = Vector2(6, 12)
+
+[node name="SideButton" type="Area2D" unique_id=1788821875 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_l3eec")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=158832326]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_o8bvp")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=535316081]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_o8bvp")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
