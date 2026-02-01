@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsu631xlkfi64" path="res://assets/tileset/mainlev_build.png" id="2_ma5rq"]
 [ext_resource type="PackedScene" uid="uid://wd6ldrqcbfhp" path="res://scenes/box/rigid_body_2d.tscn" id="3_e3dby"]
 [ext_resource type="PackedScene" uid="uid://3o4rgjkl203r" path="res://scenes/totem/white_totem.tscn" id="4_gsayk"]
+[ext_resource type="PackedScene" uid="uid://i4t5jk6bk6pr" path="res://scenes/Background/background.tscn" id="5_gf1f2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3dby"]
 texture = ExtResource("2_ma5rq")
@@ -934,7 +935,6 @@ sources/0 = SubResource("TileSetAtlasSource_e3dby")
 [node name="Player" parent="." unique_id=1831433174 groups=["player"] instance=ExtResource("1_e64el")]
 position = Vector2(0, 5)
 JumpVelocity = -300.0
-canpush = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=201560870]
 zoom = Vector2(3.955, 3.955)
@@ -952,3 +952,8 @@ lock_rotation = true
 [node name="WhiteTotem" parent="." unique_id=412478958 instance=ExtResource("4_gsayk")]
 position = Vector2(100, 5)
 disable_mode = 2
+
+[node name="Background" parent="." unique_id=972627146 instance=ExtResource("5_gf1f2")]
+show_behind_parent = true
+position = Vector2(398, -37)
+scale = Vector2(1.1291667, 0.90937495)
