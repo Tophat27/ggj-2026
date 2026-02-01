@@ -2,17 +2,22 @@
 
 [ext_resource type="Script" uid="uid://7t63ppqkt8gv" path="res://scenes/exit/Exit.cs" id="1_wmb3t"]
 [ext_resource type="Texture2D" uid="uid://cu48vxbcaksdh" path="res://assets/Hallow dugeon/exit.png" id="1_ymjir"]
+[ext_resource type="AudioStream" uid="uid://80ktm2si26ji" path="res://assets/audio/sfx/winner-game-sound-404167.mp3" id="3_tv5rl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmb3t"]
 height = 44.0
 
-[node name="Exit" type="Area2D" unique_id=1666461757]
+[node name="Exit" type="Area2D" unique_id=1666461757 node_paths=PackedStringArray("sfx")]
 script = ExtResource("1_wmb3t")
+sfx = NodePath("AudioStreamPlayer2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=822168429]
 texture = ExtResource("1_ymjir")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063977585]
 shape = SubResource("CapsuleShape2D_wmb3t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1208272363]
+stream = ExtResource("3_tv5rl")
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

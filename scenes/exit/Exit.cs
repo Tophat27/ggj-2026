@@ -5,10 +5,14 @@ public partial class Exit : Area2D
 {
 	[Export]
 	Label text;
+	[Export]
+	public AudioStreamPlayer2D sfx;
 	public void OnBodyEntered(Node2D collision){
 		if (collision.IsInGroup("player"))
 		{
-			text.LabelSettings.FontColor = new Color(text.LabelSettings.FontColor, 1f); 
+			text.LabelSettings.FontColor = new Color(text.LabelSettings.FontColor, 1f);
+			sfx.Play();
+			 
 		}
 	}
 }
