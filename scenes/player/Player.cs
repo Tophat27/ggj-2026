@@ -113,7 +113,7 @@ public partial class Player : CharacterBody2D
 		current_sprite = 1;
 		totaljumps = 2;
 		force.Disabled = true;
-	}
+	} 
 	
 	public void ActivateBearMask(){
 		current_sprite = 2;

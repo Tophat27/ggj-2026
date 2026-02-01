@@ -13,5 +13,5 @@ func _on_body_entered(body):
 		aplicar_efeito(body)
 		#coletar()
 
-func aplicar_efeito(player): player.ActivateFoxMask()
+func aplicar_efeito(player): player.ActivateBearMask()
 		

@@ -40,13 +40,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4f53"]
+size = Vector2(11.5, 15.5)
 
 [node name="WhiteTotem" type="Area2D" unique_id=412478958]
 script = ExtResource("1_08dsx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=296438776]
 sprite_frames = SubResource("SpriteFrames_8v8b1")
-frame_progress = 0.67575
+frame_progress = 0.8205297
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441624660]
+position = Vector2(0, 2.25)
 shape = SubResource("RectangleShape2D_g4f53")

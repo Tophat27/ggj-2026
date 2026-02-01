@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b2aab6s7ujs0r"]
+
+[ext_resource type="Script" uid="uid://cgleet0lyrkvk" path="res://scenes/totem/green_totem.gd" id="1_ot75w"]
+[ext_resource type="Texture2D" uid="uid://bq8kry0xwac0m" path="res://assets/totem_sprites/totem Green.png" id="2_jhptk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np2xr"]
+atlas = ExtResource("2_jhptk")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jqiw"]
+atlas = ExtResource("2_jhptk")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6ayo"]
+atlas = ExtResource("2_jhptk")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apgda"]
+atlas = ExtResource("2_jhptk")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_paoxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np2xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jqiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6ayo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apgda")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhhg4"]
+size = Vector2(15.021351, 10.97142)
+
+[node name="GreenTotem" type="Area2D" unique_id=857969235]
+script = ExtResource("1_ot75w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1448903505]
+sprite_frames = SubResource("SpriteFrames_paoxm")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=84533345]
+position = Vector2(0.48755884, 2.4910777)
+rotation = -1.5672326
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_bhhg4")

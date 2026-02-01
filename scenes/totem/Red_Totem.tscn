@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://duyh0kl1q1kqj"]
+
+[ext_resource type="Script" uid="uid://wq8kmxtgenfr" path="res://scenes/totem/red_totem.gd" id="1_b3x3b"]
+[ext_resource type="Texture2D" uid="uid://b3i0dc0ujmoio" path="res://assets/totem_sprites/totem mascara ala-Sheet.png" id="2_b5wld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2sgi"]
+atlas = ExtResource("2_b5wld")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdt4r"]
+atlas = ExtResource("2_b5wld")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7pq8"]
+atlas = ExtResource("2_b5wld")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4my50"]
+atlas = ExtResource("2_b5wld")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxlfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2sgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdt4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7pq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4my50")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tn50"]
+size = Vector2(11, 15)
+
+[node name="RedTotem" type="Area2D" unique_id=266062664]
+script = ExtResource("1_b3x3b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2139070222]
+sprite_frames = SubResource("SpriteFrames_nxlfs")
+frame_progress = 0.07864497
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1887612743]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_7tn50")
